@@ -1,5 +1,5 @@
 import { getCategories } from "@/lib/data/categories";
-import { getAllProducts } from "@/lib/data/products";
+import { getProducts } from "@/lib/data/products";
 import { getGlobalSettings } from "@/lib/data/settings";
 import { Hero } from "@/components/home/Hero";
 import { ProductRange } from "@/components/home/ProductRange";
@@ -33,7 +33,7 @@ const faqs = [
 
 export default async function Home() {
   const categories = await getCategories();
-  const products = await getAllProducts();
+  const products = await getProducts();
   const settings = await getGlobalSettings();
 
   return (

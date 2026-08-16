@@ -1,4 +1,6 @@
 import { getCategories } from "@/lib/data/categories";
+import { getAllProducts } from "@/lib/data/products";
+import { getGlobalSettings } from "@/lib/data/settings";
 import { Hero } from "@/components/home/Hero";
 import { ProductRange } from "@/components/home/ProductRange";
 import { WhyChooseUs } from "@/components/home/WhyChooseUs";
@@ -31,11 +33,13 @@ const faqs = [
 
 export default async function Home() {
   const categories = await getCategories();
+  const products = await getAllProducts();
+  const settings = await getGlobalSettings();
 
   return (
     <div className="flex flex-col w-full">
       <Hero />
-      <ProductRange categories={categories} />
+      <ProductRange categories={categories} products={products} settings={settings} />
       <WhyChooseUs />
       <HowWeWork />
 

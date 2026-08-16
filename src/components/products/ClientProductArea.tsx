@@ -4,14 +4,16 @@ import { useState, useMemo } from "react"
 import { ProductToolbar } from "./ProductToolbar"
 import { ProductGrid } from "./ProductGrid"
 import { ProductCard } from "./ProductCard"
+import { CatalogueDownloadButton } from "../pdf/CatalogueDownloadButton"
 
 interface ClientProductAreaProps {
   categoryName: string
   categorySlug: string
   initialProducts: any[]
+  settings?: any
 }
 
-export function ClientProductArea({ categoryName, categorySlug, initialProducts }: ClientProductAreaProps) {
+export function ClientProductArea({ categoryName, categorySlug, initialProducts, settings }: ClientProductAreaProps) {
   const [sortOption, setSortOption] = useState('popular')
 
   const sortedProducts = useMemo(() => {
@@ -30,12 +32,23 @@ export function ClientProductArea({ categoryName, categorySlug, initialProducts 
 
   return (
     <main className="flex-1 w-full min-w-0">
-      <ProductToolbar 
-        categoryName={categoryName} 
-        productCount={sortedProducts.length} 
-        currentSort={sortOption}
-        onSortChange={setSortOption}
-      />
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+        <ProductToolbar 
+          categoryName={categoryName} 
+          productCount={sortedProducts.length} 
+          currentSort={sortOption}
+          onSortChange={setSortOption}
+        />
+        {settings && sortedProducts.length > 0 && (
+          <CatalogueDownloadButton 
+            settings={settings}
+            products={sortedProducts}
+            categoryName={categoryName}
+            label={`Download ${categoryName} Catalogue`}
+            className="w-full sm:w-auto shadow-sm"
+          />
+        )}
+      </div>
       
       <ProductGrid isEmpty={sortedProducts.length === 0}>
         {sortedProducts.map((product) => (

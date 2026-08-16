@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation"
 import { getCategories, getCategoryBySlug } from "@/lib/data/categories"
 import { getProductsByCategory } from "@/lib/data/products"
+import { getGlobalSettings } from "@/lib/data/settings"
 import { ProductPageHero } from "@/components/products/ProductPageHero"
 import { CategorySidebar } from "@/components/products/CategorySidebar"
 import { BulkOrderCard } from "@/components/products/BulkOrderCard"
@@ -47,6 +48,7 @@ export default async function CategoryPage({
   }
   
   const products = await getProductsByCategory(currentCategory.id);
+  const settings = await getGlobalSettings();
 
   return (
     <div className="flex flex-col w-full bg-[#FAFAFA]">
@@ -77,6 +79,7 @@ export default async function CategoryPage({
             categoryName={currentCategory.name}
             categorySlug={currentCategory.slug}
             initialProducts={products}
+            settings={settings}
           />
 
         </div>

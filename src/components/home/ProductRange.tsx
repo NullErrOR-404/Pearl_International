@@ -3,6 +3,7 @@
 import { ProductCategoryCard } from "./ProductCategoryCard"
 import { Category } from "@/lib/data/categories"
 import { ArrowLeft, ArrowRight } from "lucide-react"
+import { CatalogueDownloadButton } from "../pdf/CatalogueDownloadButton"
 import { useRef } from "react"
 import { gsap } from "gsap"
 import { useGSAP } from "@gsap/react"
@@ -12,9 +13,11 @@ gsap.registerPlugin(useGSAP, ScrollTrigger)
 
 interface ProductRangeProps {
   categories: Category[]
+  products?: any[]
+  settings?: any
 }
 
-export function ProductRange({ categories }: ProductRangeProps) {
+export function ProductRange({ categories, products, settings }: ProductRangeProps) {
   const sectionRef = useRef<HTMLElement>(null)
 
   useGSAP(() => {
@@ -58,9 +61,21 @@ export function ProductRange({ categories }: ProductRangeProps) {
               </span>
               <div className="w-12 h-[1px] bg-brand-gold hidden sm:block"></div>
             </div>
-            <h2 className="header-element font-serif text-4xl md:text-5xl lg:text-6xl text-white font-bold">
-              Quality Products. <br className="hidden sm:block"/>Naturally Sourced.
-            </h2>
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+              <h2 className="header-element font-serif text-4xl md:text-5xl lg:text-6xl text-white font-bold">
+                Quality Products. <br className="hidden sm:block"/>Naturally Sourced.
+              </h2>
+              {settings && products && products.length > 0 && (
+                <div className="header-element pb-2">
+                  <CatalogueDownloadButton 
+                    settings={settings}
+                    products={products}
+                    label="Download Full Catalogue"
+                    className="w-full md:w-auto shadow-md"
+                  />
+                </div>
+              )}
+            </div>
           </div>
           
           {/* Carousel Controls (Presentational) */}

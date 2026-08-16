@@ -43,6 +43,10 @@ export function SiteHeader() {
     }
   }, [isMobileMenuOpen])
 
+  if (pathname?.startsWith('/admin')) {
+    return null
+  }
+
   return (
     <>
       <header className="sticky top-0 z-40 w-full backdrop-blur-md bg-white/90 border-b border-brand-navy/10" role="banner">

@@ -5,6 +5,7 @@ import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { TopBar } from "@/components/layout/TopBar";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
+import { HideOnAdmin } from "@/components/layout/HideOnAdmin";
 import { PageViewTracker } from "@/components/layout/PageViewTracker";
 import { StickyMobileCTA } from "@/components/layout/StickyMobileCTA";
 import { getGlobalSettings } from "@/lib/data/settings";
@@ -78,15 +79,21 @@ export default async function RootLayout({
           `}
         </Script>
 
-        <TopBar />
-        <SiteHeader />
         <SmoothScroll>
+          <HideOnAdmin>
+            <TopBar />
+          </HideOnAdmin>
+          <SiteHeader />
           <div id="main-content" className="flex-1">
             {children}
           </div>
-          <SiteFooter />
+          <HideOnAdmin>
+            <SiteFooter />
+          </HideOnAdmin>
         </SmoothScroll>
-        <StickyMobileCTA />
+        <HideOnAdmin>
+          <StickyMobileCTA />
+        </HideOnAdmin>
         <PageViewTracker />
       </body>
     </html>

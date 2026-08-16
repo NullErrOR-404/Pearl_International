@@ -16,7 +16,8 @@ export default async function InsightsPage() {
     <main className="flex flex-col pb-24">
       <PageHero 
         title="Insights & News" 
-        subtitle="Market trends, company updates, and industry knowledge."
+        description="Market trends, company updates, and industry knowledge."
+        imageSrc="/images/quality-agri-field.jpg"
       />
       
       <section className="container mx-auto px-4 max-w-7xl mt-12 md:mt-24">

@@ -4,6 +4,7 @@ import { ElegantSelect } from "@/components/ui/ElegantSelect"
 export interface SelectInputProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   icon?: React.ReactNode
   options: { label: string; value: string }[]
+  placeholder?: string
 }
 
 export const SelectInput = React.forwardRef<HTMLInputElement, SelectInputProps>(

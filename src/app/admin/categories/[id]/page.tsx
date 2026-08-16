@@ -16,7 +16,8 @@ const categorySchema = z.object({
   slug: z.string().min(1, "Slug is required"),
   sort_order: z.number().int(),
   is_active: z.boolean(),
-  is_visible: z.boolean().default(true),
+  is_visible: z.boolean().optional(),
+  description: z.string().optional(),
 })
 
 type CategoryForm = z.infer<typeof categorySchema>

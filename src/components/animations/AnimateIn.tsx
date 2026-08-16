@@ -9,6 +9,7 @@ export function AnimateIn({ children, delay = 0, className = "" }: { children: R
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
     const el = elementRef.current
+    if (!el) return
     
     const ctx = gsap.context(() => {
       gsap.fromTo(el, 

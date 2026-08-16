@@ -18,7 +18,7 @@ const productSchema = z.object({
   short_description: z.string().min(1, "Short description is required"),
   full_description: z.string().optional(),
   category_id: z.string().uuid("Please select a category"),
-  is_visible: z.boolean().default(true),
+  is_visible: z.boolean().optional(),
 })
 
 type ProductForm = z.infer<typeof productSchema>

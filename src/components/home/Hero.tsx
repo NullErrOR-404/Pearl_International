@@ -139,7 +139,7 @@ export function Hero() {
           <div className="flex-1 w-full relative h-[400px] md:h-full min-h-[500px]">
             <div className="hero-image absolute inset-0 w-full h-full md:rounded-l-[120px] lg:rounded-l-[200px] overflow-hidden shadow-2xl z-20 bg-brand-navy/5">
               <Image 
-                src="/images/home/hero.png" 
+                src="/images/home/hero.jpg" 
                 alt="Pearl International Global Export" 
                 fill 
                 className="hero-image-inner object-cover scale-[1.1]"

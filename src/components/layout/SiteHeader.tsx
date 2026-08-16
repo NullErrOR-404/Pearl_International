@@ -63,6 +63,8 @@ export function SiteHeader() {
               height={90} 
               className="h-12 md:h-16 w-auto object-contain" 
               priority
+              quality={100}
+              unoptimized={true}
             />
           </Link>
           <nav className="hidden md:flex flex-1 justify-around items-center max-w-4xl" aria-label="Main Navigation">

@@ -11,6 +11,9 @@ export async function ContactInformation() {
   const showFacebook = settings?.show_facebook ?? true
   const showInstagram = settings?.show_instagram ?? true
   const showLinkedin = settings?.show_linkedin ?? true
+  
+  const websiteDomain = settings?.website_domain || "pearlinternational.vercel.app"
+  const websiteUrl = websiteDomain.startsWith('http') ? websiteDomain : `https://${websiteDomain}`
 
   return (
     <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-brand-charcoal/10 h-full flex flex-col">
@@ -83,7 +86,7 @@ export async function ContactInformation() {
           </div>
           <div className="pt-1">
             <span className="block font-sans font-bold text-brand-navy text-sm mb-1">Website</span>
-            <a href="https://pearlinternational.vercel.app" target="_blank" rel="noopener noreferrer" className="text-brand-charcoal/70 text-sm hover:text-brand-gold transition-colors">pearlinternational.vercel.app</a>
+            <a href={websiteUrl} target="_blank" rel="noopener noreferrer" className="text-brand-charcoal/70 text-sm hover:text-brand-gold transition-colors">{websiteDomain}</a>
           </div>
         </div>
 

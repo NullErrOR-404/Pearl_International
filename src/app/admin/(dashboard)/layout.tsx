@@ -1,21 +1,44 @@
-import { ReactNode } from "react"
+"use client"
+
+import { ReactNode, useState, useEffect } from "react"
 import Link from "next/link"
-import { ShieldCheck, LogOut, LayoutDashboard, Package, Settings, Tags, Inbox, FileText } from "lucide-react"
+import { usePathname } from "next/navigation"
+import { ShieldCheck, LogOut, LayoutDashboard, Package, Settings, Tags, Inbox, FileText, Menu, X } from "lucide-react"
 import { CommandPalette } from "@/components/admin/CommandPalette"
 
-export const metadata = {
-  title: "Admin Dashboard | Pearl International",
-  description: "Secure management portal for Pearl International",
-}
-
 export default function AdminLayout({ children }: { children: ReactNode }) {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const pathname = usePathname()
+
+  // Close sidebar on route change on mobile
+  useEffect(() => {
+    setIsSidebarOpen(false)
+  }, [pathname])
+
   return (
     <div className="min-h-screen w-full bg-gray-50 flex flex-col md:block">
+      
+      {/* Mobile Overlay */}
+      {isSidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-brand-navy/60 z-30 md:hidden backdrop-blur-sm"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+
       {/* Sidebar */}
-      <aside className="w-full md:w-64 bg-brand-navy text-white flex flex-col shadow-2xl z-20 md:fixed md:inset-y-0 md:left-0">
-        <div className="p-6 border-b border-white/10 flex items-center gap-3 shrink-0">
-          <ShieldCheck className="w-6 h-6 text-brand-gold" />
-          <span className="font-serif font-bold tracking-widest text-lg">ADMIN</span>
+      <aside className={`fixed inset-y-0 left-0 w-64 bg-brand-navy text-white flex flex-col shadow-2xl z-40 transform transition-transform duration-300 ease-in-out md:translate-x-0 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+        <div className="p-6 border-b border-white/10 flex items-center justify-between shrink-0">
+          <div className="flex items-center gap-3">
+            <ShieldCheck className="w-6 h-6 text-brand-gold" />
+            <span className="font-serif font-bold tracking-widest text-lg">ADMIN</span>
+          </div>
+          <button 
+            className="md:hidden text-gray-400 hover:text-white"
+            onClick={() => setIsSidebarOpen(false)}
+          >
+            <X className="w-6 h-6" />
+          </button>
         </div>
         
         <nav className="flex-1 p-4 flex flex-col gap-2 overflow-y-auto">
@@ -52,15 +75,23 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
       </aside>
 
       {/* Main Content Area */}
-      <main className="flex-1 flex flex-col min-h-screen md:pl-64">
-        <header className="shrink-0 bg-white border-b border-gray-200 p-6 flex justify-between items-center shadow-sm sticky top-0 z-10">
-          <div className="flex flex-col">
-            <h1 className="font-sans font-bold text-gray-800 tracking-wider">Pearl International Admin</h1>
-            <span className="text-xs text-gray-500 font-mono mt-1 hidden md:block">Press <kbd className="bg-gray-100 px-1 py-0.5 rounded border border-gray-200">Ctrl/Cmd + K</kbd> for Quick Actions</span>
+      <main className="flex-1 flex flex-col min-h-screen md:pl-64 w-full">
+        <header className="shrink-0 bg-white border-b border-gray-200 p-4 md:p-6 flex justify-between items-center shadow-sm sticky top-0 z-10">
+          <div className="flex items-center gap-4">
+            <button 
+              className="md:hidden text-gray-500 hover:text-brand-navy p-1"
+              onClick={() => setIsSidebarOpen(true)}
+            >
+              <Menu className="w-6 h-6" />
+            </button>
+            <div className="flex flex-col">
+              <h1 className="font-sans font-bold text-gray-800 tracking-wider text-sm md:text-base">Pearl International Admin</h1>
+              <span className="text-xs text-gray-500 font-mono mt-1 hidden lg:block">Press <kbd className="bg-gray-100 px-1 py-0.5 rounded border border-gray-200">Ctrl/Cmd + K</kbd> for Quick Actions</span>
+            </div>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-            <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">Secure Session</span>
+            <span className="text-[10px] md:text-xs font-mono text-gray-500 uppercase tracking-widest">Secure Session</span>
           </div>
         </header>
         <div className="flex-1 p-6 lg:p-10">

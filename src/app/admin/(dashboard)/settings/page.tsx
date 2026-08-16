@@ -23,6 +23,7 @@ type SettingsForm = {
   show_instagram: boolean
   show_linkedin: boolean
   contact_email: string
+  website_domain: string
 }
 
 export default function AdminSettingsPage() {
@@ -54,6 +55,7 @@ export default function AdminSettingsPage() {
           show_instagram: data.show_instagram ?? true,
           show_linkedin: data.show_linkedin ?? true,
           contact_email: data.contact_email || "sameen14nmofficial@gmail.com",
+          website_domain: data.website_domain || "pearlinternational.vercel.app",
         })
       } else if (error && error.code !== 'PGRST116') {
         alert("Error loading settings: " + error.message)
@@ -161,6 +163,14 @@ export default function AdminSettingsPage() {
                 className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand-gold outline-none"
               />
               <p className="text-xs text-gray-400 mt-2">Where should contact form submissions be sent?</p>
+            </div>
+            <div className="md:col-span-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Website Domain</label>
+              <input
+                {...register("website_domain")}
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand-gold outline-none"
+              />
+              <p className="text-xs text-gray-400 mt-2">The domain shown on the contact page. Example: pearlinternational.com</p>
             </div>
             <div className="md:col-span-2">
               <label className="block text-sm font-semibold text-gray-700 mb-2">Office Address</label>

@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./public/images/home_hero.jpg" alt="Pearl International Hero" width="100%" style="border-radius: 12px; margin-bottom: 20px" />
+  <img src="./public/images/mark.png" alt="Pearl International Hero" width="100%" style="border-radius: 12px; margin-bottom: 20px" />
   
   # 🌴 Pearl International
   

@@ -144,6 +144,7 @@ export function Hero() {
                 fill 
                 className="hero-image-inner object-cover scale-[1.1]"
                 priority
+                quality={100}
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-brand-ivory/20 to-transparent mix-blend-overlay pointer-events-none"></div>

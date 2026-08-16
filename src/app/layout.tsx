@@ -44,6 +44,9 @@ export async function generateMetadata(): Promise<Metadata> {
       description: settings?.default_meta_description || "B2B agricultural export company.",
       images: ['/og/og-image.jpg'],
     },
+    verification: {
+      google: 'ixCkAfcqTBWKJbQBgViU10-aGK94QfGPP_BxmUnEiUY',
+    },
     metadataBase: new URL('https://www.pearlinternational.com'),
   }
 }

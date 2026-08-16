@@ -1,0 +1,1 @@
+# Project Context\n\nPearl International is a B2B agricultural export company. Objective: Present company, showcase products, generate B2B leads.

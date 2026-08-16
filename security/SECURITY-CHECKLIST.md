@@ -1,0 +1,1 @@
+# Security Checklist\n\n- [ ] Secrets\n- [ ] Database\n- [ ] RLS\n- [ ] Forms\n- [ ] API\n- [ ] Dependencies

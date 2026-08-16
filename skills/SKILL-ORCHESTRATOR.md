@@ -1,0 +1,1 @@
+# Skill Orchestrator\n\nPolicy for automatic invocation of skills based on tasks. (UI/UX Pro Max for UI, GSAP for complex animations, Taste for visual polish, Agentic Awesome for repo tasks).

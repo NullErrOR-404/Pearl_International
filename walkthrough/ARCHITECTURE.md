@@ -1,0 +1,1 @@
+# Architecture\n\nFrontend: Next.js App Router (TypeScript, Tailwind v4)\nBackend: Supabase (future)\nData flow: UI -> Supabase API -> DB

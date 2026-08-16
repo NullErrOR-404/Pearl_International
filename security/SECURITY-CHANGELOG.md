@@ -1,0 +1,1 @@
+# Security Changelog\n\n- Initial security architecture baseline established.

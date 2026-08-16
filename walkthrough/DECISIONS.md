@@ -1,0 +1,1 @@
+# Decisions\n\n- Frontend: Next.js App Router, Tailwind v4, custom components.\n- Forms: React Hook Form + Zod.

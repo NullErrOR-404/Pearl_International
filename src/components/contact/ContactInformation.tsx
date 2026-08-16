@@ -83,7 +83,7 @@ export async function ContactInformation() {
           </div>
           <div className="pt-1">
             <span className="block font-sans font-bold text-brand-navy text-sm mb-1">Website</span>
-            <a href="https://www.pearlinternational.com" target="_blank" rel="noopener noreferrer" className="text-brand-charcoal/70 text-sm hover:text-brand-gold transition-colors">www.pearlinternational.com</a>
+            <a href="https://pearlinternational.vercel.app" target="_blank" rel="noopener noreferrer" className="text-brand-charcoal/70 text-sm hover:text-brand-gold transition-colors">pearlinternational.vercel.app</a>
           </div>
         </div>
 

@@ -17,7 +17,6 @@ export function SmoothScroll({ children }: SmoothScrollProps) {
       lerp: 0.1, // Snappy but smooth (higher = snappier, lower = more dreamy)
       wheelMultiplier: 1.2, // Slightly faster wheel scrolling for responsiveness
       smoothWheel: true,
-      syncTouch: true, // Sync touch scrolling for mobile buttery feel
     })
 
     lenis.on('scroll', ScrollTrigger.update)

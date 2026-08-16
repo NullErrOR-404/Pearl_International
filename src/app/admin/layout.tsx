@@ -1,6 +1,6 @@
 import { ReactNode } from "react"
 import Link from "next/link"
-import { ShieldCheck, LogOut, LayoutDashboard, Package, Settings, Tags, Inbox } from "lucide-react"
+import { ShieldCheck, LogOut, LayoutDashboard, Package, Settings, Tags, Inbox, FileText } from "lucide-react"
 import { CommandPalette } from "@/components/admin/CommandPalette"
 
 export const metadata = {
@@ -24,6 +24,9 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
           </Link>
           <Link href="/admin/inquiries" className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/10 transition-colors text-sm font-semibold tracking-wider">
             <Inbox className="w-5 h-5 text-brand-gold" /> Inquiries
+          </Link>
+          <Link href="/admin/articles" className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/10 transition-colors text-sm font-semibold tracking-wider">
+            <FileText className="w-5 h-5 text-brand-gold" /> Articles
           </Link>
           <Link href="/admin/products" className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/10 transition-colors text-sm font-semibold tracking-wider">
             <Package className="w-5 h-5 text-brand-gold" /> Products

@@ -7,6 +7,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { CheckCircle2 } from "lucide-react"
 import { AnimateIn } from "@/components/animations/AnimateIn"
+import Script from "next/script"
 
 export async function generateMetadata({ params }: { params: Promise<{ category: string, product: string }> }) {
   const resolvedParams = await params;
@@ -42,6 +43,35 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
 
   return (
     <main className="flex flex-col gap-12 lg:gap-16 pb-24 pt-4 md:pt-8">
+      {/* Product JSON-LD */}
+      <Script id={`product-schema-${product.id}`} type="application/ld+json">
+        {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "name": "${product.name}",
+            "image": "${product.image}",
+            "description": "${product.short_description}",
+            "brand": {
+              "@type": "Brand",
+              "name": "Pearl International"
+            },
+            "category": "${category.name}",
+            "offers": {
+              "@type": "Offer",
+              "availability": "https://schema.org/InStock",
+              "priceCurrency": "USD",
+              "price": "0.00",
+              "priceValidUntil": "2026-12-31",
+              "seller": {
+                "@type": "Organization",
+                "name": "Pearl International"
+              }
+            }
+          }
+        `}
+      </Script>
+
       <section className="container mx-auto px-4 max-w-7xl">
         <Breadcrumbs items={[
           { label: 'Products', href: '/products' },

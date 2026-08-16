@@ -126,3 +126,47 @@ export async function upsertSettings(payload: any, id: string) {
     return { success: false, error: err.message }
   }
 }
+
+export async function getAdminArticles() {
+  try {
+    const { data, error } = await supabaseAdmin.from('articles').select('*').order('created_at', { ascending: false })
+    if (error) throw error
+    return { success: true, data }
+  } catch (err: any) {
+    return { success: false, error: err.message, data: [] }
+  }
+}
+
+export async function upsertArticle(payload: any, id?: string) {
+  try {
+    if (id) {
+      const { error } = await supabaseAdmin.from('articles').update(payload).eq('id', id)
+      if (error) return { success: false, error: error.message }
+      await logActivity('UPDATE', 'Article', id, { title: payload.title })
+    } else {
+      const { data, error } = await supabaseAdmin.from('articles').insert([payload]).select().single()
+      if (error) return { success: false, error: error.message }
+      await logActivity('CREATE', 'Article', data?.id, { title: payload.title })
+    }
+
+    revalidatePath('/insights')
+    revalidatePath('/admin/articles')
+    return { success: true }
+  } catch (err: any) {
+    return { success: false, error: err.message }
+  }
+}
+
+export async function deleteArticle(id: string) {
+  try {
+    const { error } = await supabaseAdmin.from('articles').delete().eq('id', id)
+    if (error) return { success: false, error: error.message }
+    await logActivity('DELETE', 'Article', id)
+    
+    revalidatePath('/insights')
+    revalidatePath('/admin/articles')
+    return { success: true }
+  } catch (err: any) {
+    return { success: false, error: err.message }
+  }
+}

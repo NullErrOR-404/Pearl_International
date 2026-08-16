@@ -8,6 +8,7 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { PageViewTracker } from "@/components/layout/PageViewTracker";
 import { StickyMobileCTA } from "@/components/layout/StickyMobileCTA";
 import { getGlobalSettings } from "@/lib/data/settings";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
@@ -58,6 +59,25 @@ export default async function RootLayout({
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-white focus:text-brand-navy">
           Skip to content
         </a>
+        
+        {/* Organization JSON-LD */}
+        <Script id="organization-schema" type="application/ld+json" strategy="afterInteractive">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Pearl International",
+              "url": "https://www.pearlinternational.com",
+              "logo": "https://www.pearlinternational.com/logo.png",
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "${settings?.contact_phone || '+91 9489240467'}",
+                "contactType": "customer service"
+              }
+            }
+          `}
+        </Script>
+
         <TopBar />
         <SiteHeader />
         <SmoothScroll>

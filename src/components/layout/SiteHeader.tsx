@@ -6,6 +6,16 @@ import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { createPortal } from "react-dom"
 
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/products", label: "Products" },
+  { href: "/quality", label: "Quality" },
+  { href: "/services", label: "Services" },
+  { href: "/insights", label: "Insights" },
+  { href: "/contact", label: "Contact" },
+]
+
 export function SiteHeader() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
@@ -52,12 +62,11 @@ export function SiteHeader() {
             />
           </Link>
           <nav className="hidden md:flex flex-1 justify-around items-center max-w-4xl" aria-label="Main Navigation">
-            <Link href="/" className="relative text-sm font-medium text-brand-charcoal hover:-translate-y-0.5 hover:text-brand-gold transition-all duration-300 after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-brand-gold after:transition-all after:duration-300 hover:after:w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold rounded-sm px-2 py-1">Home</Link>
-            <Link href="/about" className="relative text-sm font-medium text-brand-charcoal hover:-translate-y-0.5 hover:text-brand-gold transition-all duration-300 after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-brand-gold after:transition-all after:duration-300 hover:after:w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold rounded-sm px-2 py-1">About</Link>
-            <Link href="/products" className="relative text-sm font-medium text-brand-charcoal hover:-translate-y-0.5 hover:text-brand-gold transition-all duration-300 after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-brand-gold after:transition-all after:duration-300 hover:after:w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold rounded-sm px-2 py-1">Products</Link>
-            <Link href="/quality" className="relative text-sm font-medium text-brand-charcoal hover:-translate-y-0.5 hover:text-brand-gold transition-all duration-300 after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-brand-gold after:transition-all after:duration-300 hover:after:w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold rounded-sm px-2 py-1">Quality</Link>
-            <Link href="/services" className="relative text-sm font-medium text-brand-charcoal hover:-translate-y-0.5 hover:text-brand-gold transition-all duration-300 after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-brand-gold after:transition-all after:duration-300 hover:after:w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold rounded-sm px-2 py-1">Services</Link>
-            <Link href="/contact" className="relative text-sm font-medium text-brand-charcoal hover:-translate-y-0.5 hover:text-brand-gold transition-all duration-300 after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-brand-gold after:transition-all after:duration-300 hover:after:w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold rounded-sm px-2 py-1">Contact</Link>
+            {navLinks.map((link) => (
+              <Link key={link.label} href={link.href} className="relative text-sm font-medium text-brand-charcoal hover:-translate-y-0.5 hover:text-brand-gold transition-all duration-300 after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-brand-gold after:transition-all after:duration-300 hover:after:w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold rounded-sm px-2 py-1">
+                {link.label}
+              </Link>
+            ))}
           </nav>
           <div className="hidden md:flex shrink-0 ml-4">
             <Link href="/contact" className="bg-brand-navy text-white px-6 py-3 rounded-lg text-sm font-semibold hover:bg-brand-gold hover:text-brand-navy hover:-translate-y-0.5 transition-all duration-300 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2">Enquire Now</Link>
@@ -100,22 +109,15 @@ export function SiteHeader() {
           >
             <div className="flex flex-col h-full pt-32 pb-8 px-8 overflow-y-auto">
               <nav className="flex flex-col gap-6" aria-label="Mobile Navigation">
-                {[
-                  { name: 'Home', href: '/' },
-                  { name: 'About', href: '/about' },
-                  { name: 'Products', href: '/products' },
-                  { name: 'Quality', href: '/quality' },
-                  { name: 'Services', href: '/services' },
-                  { name: 'Contact', href: '/contact' },
-                ].map((link, idx) => (
+                {navLinks.map((link, idx) => (
                   <Link 
-                    key={link.name}
+                    key={link.label}
                     href={link.href} 
                     className={`text-brand-navy font-sans text-2xl font-bold tracking-tight transition-all duration-300 hover:text-brand-gold ${isMobileMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'}`}
                     style={{ transitionDelay: isMobileMenuOpen ? `${idx * 75 + 100}ms` : '0ms' }}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    {link.name}
+                    {link.label}
                   </Link>
                 ))}
               </nav>

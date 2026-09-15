@@ -55,22 +55,22 @@ export function ProductRange({ categories, products, settings }: ProductRangePro
         {/* Header Area */}
         <div className="flex flex-col md:flex-row justify-between items-end gap-6 mb-16">
           <div className="flex-1 text-center md:text-left">
-            <div className="header-element flex items-center justify-center md:justify-start gap-4 mb-4">
-              <span className="font-sans font-bold uppercase tracking-widest text-brand-gold text-sm">
-                OUR PRODUCT RANGE
+            <div className="header-element flex items-center justify-center md:justify-start gap-4 mb-3">
+              <span className="font-sans font-bold uppercase tracking-widest text-brand-gold text-xs sm:text-sm">
+                EXPORT COMMODITY PORTFOLIO
               </span>
               <div className="w-12 h-[1px] bg-brand-gold hidden sm:block"></div>
             </div>
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-              <h2 className="header-element font-serif text-4xl md:text-5xl lg:text-6xl text-white font-bold">
-                Quality Products. <br className="hidden sm:block"/>Naturally Sourced.
+              <h2 className="header-element font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-bold max-w-2xl leading-tight">
+                Commercial Grades Sourced for Food Processors &amp; Distributors.
               </h2>
               {settings && products && products.length > 0 && (
                 <div className="header-element pb-2">
                   <CatalogueDownloadButton 
                     settings={settings}
                     products={products}
-                    label="Download Full Catalogue"
+                    label="Download Crop Specifications & Packing Guide"
                     className="w-full md:w-auto shadow-md"
                   />
                 </div>

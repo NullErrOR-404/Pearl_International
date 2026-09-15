@@ -77,60 +77,58 @@ export function Hero() {
           
           {/* Left Content */}
           <div className="flex-1 flex flex-col items-start z-10 w-full max-w-xl">
-            <span className="hero-element font-sans font-bold uppercase tracking-widest text-brand-gold text-sm mb-4 block">
-              PREMIUM QUALITY.
+            <span className="hero-element font-sans font-bold uppercase tracking-widest text-brand-gold text-xs sm:text-sm mb-3 block">
+              DIRECT EXPORT SOURCING FROM INDIA
             </span>
             <h1 
-              className="hero-element tracking-tight text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-brand-navy font-semibold leading-tight mb-6"
-              style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"' }}
+              className="hero-element tracking-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-brand-navy font-bold leading-tight mb-4"
+              style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}
             >
-              Global Trust.
+              Bulk Agricultural Commodities Packed for Global Sea Freight.
             </h1>
             
             {/* Gold Rule */}
-            <div className="hero-element w-16 h-1 bg-brand-gold mb-6"></div>
+            <div className="hero-element w-16 h-1 bg-brand-gold mb-5"></div>
             
-            <p className="hero-element text-brand-charcoal/80 text-lg md:text-xl max-w-md leading-relaxed mb-10">
-              Pearl International is a trusted exporter of high-quality agricultural products sourced from the best farms and delivered worldwide.
+            <p className="hero-element text-brand-charcoal/85 text-base sm:text-lg max-w-lg leading-relaxed mb-6">
+              We source, inspect, and export container-load coconuts, whole spices, and fresh produce directly from regional farm belts to international ports.
             </p>
 
-            {/* CTAs */}
-            <div className="hero-element flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-16">
-              <Link href="/products" className="w-full sm:w-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold rounded-xl">
-                <Button variant="primary" className="w-full h-14 px-8 text-base font-semibold group overflow-hidden relative">
-                  <span className="relative z-10 flex items-center gap-2">EXPLORE PRODUCTS <span className="group-hover:translate-x-1 transition-transform">&rarr;</span></span>
+            {/* Pre-CTA Objection Handling Badge */}
+            <div className="hero-element inline-flex items-center gap-2 px-3.5 py-1.5 rounded-md bg-brand-navy/5 border border-brand-navy/15 text-brand-navy text-xs font-semibold mb-8">
+              <span className="w-2 h-2 rounded-full bg-emerald-600 shrink-0"></span>
+              <span>MOQ: 1x20ft FCL &bull; APEDA &amp; Phytosanitary Certified &bull; SGS Inspection Ready</span>
+            </div>
+
+            {/* CTAs with Verb + Outcome */}
+            <div className="hero-element flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-12">
+              <Link href="/contact" className="w-full sm:w-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold rounded-xl">
+                <Button variant="primary" className="w-full h-14 px-8 text-base font-semibold group overflow-hidden relative shadow-md">
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    REQUEST CONTAINER QUOTE <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                  </span>
                 </Button>
               </Link>
-              <Link href="/contact" className="w-full sm:w-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold rounded-xl">
-                <Button variant="outline" className="w-full h-14 px-8 text-base font-semibold flex items-center justify-center gap-2 hover:bg-brand-gold/10 transition-colors border-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-brand-gold"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                  CONTACT US
+              <Link href="/products" className="w-full sm:w-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold rounded-xl">
+                <Button variant="outline" className="w-full h-14 px-7 text-sm sm:text-base font-semibold flex items-center justify-center gap-2 hover:bg-brand-gold/10 transition-colors border-2">
+                  EXPLORE COMMODITY SPECS
                 </Button>
               </Link>
             </div>
 
-            {/* Metrics */}
-            <div className="hero-element grid grid-cols-3 gap-4 md:gap-8 w-full border-t border-brand-navy/10 pt-8">
+            {/* Concrete Commercial Metrics */}
+            <div className="hero-element grid grid-cols-3 gap-4 md:gap-6 w-full border-t border-brand-navy/10 pt-6">
               <div className="hero-metric flex flex-col gap-1">
-                <div className="flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-brand-gold shrink-0"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                  <span className="font-serif text-3xl lg:text-4xl text-brand-navy font-bold">25+</span>
-                </div>
-                <span className="text-xs font-semibold tracking-wider text-brand-charcoal/70 uppercase">COUNTRIES<br/>SERVED</span>
+                <span className="font-serif text-2xl lg:text-3xl text-brand-navy font-bold">FCL &amp; LCL</span>
+                <span className="text-xs font-semibold tracking-wider text-brand-charcoal/70 uppercase">SEA CONTAINER<br/>STOWAGE</span>
               </div>
               <div className="hero-metric flex flex-col gap-1">
-                <div className="flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-brand-gold shrink-0"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"></path><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"></path><path d="M2 7h20"></path><path d="M22 7v3a2 2 0 0 1-2 2v0a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12v0a2 2 0 0 1-2-2V7"></path></svg>
-                  <span className="font-serif text-3xl lg:text-4xl text-brand-navy font-bold">100+</span>
-                </div>
-                <span className="text-xs font-semibold tracking-wider text-brand-charcoal/70 uppercase">PREMIUM<br/>PRODUCTS</span>
+                <span className="font-serif text-2xl lg:text-3xl text-brand-navy font-bold">CUSTOM</span>
+                <span className="text-xs font-semibold tracking-wider text-brand-charcoal/70 uppercase">JUTE, PP &amp;<br/>VACUUM PACKS</span>
               </div>
               <div className="hero-metric flex flex-col gap-1">
-                <div className="flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-brand-gold shrink-0"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"></path><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path><path d="M12 17V7"></path></svg>
-                  <span className="font-serif text-3xl lg:text-4xl text-brand-navy font-bold">100%</span>
-                </div>
-                <span className="text-xs font-semibold tracking-wider text-brand-charcoal/70 uppercase">QUALITY<br/>ASSURED</span>
+                <span className="font-serif text-2xl lg:text-3xl text-brand-navy font-bold">PORT-READY</span>
+                <span className="text-xs font-semibold tracking-wider text-brand-charcoal/70 uppercase">CHENNAI &amp;<br/>TUTICORIN</span>
               </div>
             </div>
           </div>

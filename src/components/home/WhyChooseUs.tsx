@@ -56,24 +56,24 @@ export function WhyChooseUs() {
 
   const features = [
     {
-      icon: <Globe className="w-8 h-8 text-brand-gold" />,
-      title: "GLOBAL\nFOOTPRINT",
-      description: "Trusted exporter serving customers across the world."
+      icon: <ShieldCheck className="w-8 h-8 text-brand-gold" />,
+      title: "BATCH MOISTURE\nTESTING",
+      description: "Lab-verified moisture parameters and zero adulteration across every container."
     },
     {
-      icon: <ShieldCheck className="w-8 h-8 text-brand-gold" />,
-      title: "PREMIUM\nQUALITY",
-      description: "Strict quality checks to ensure the best in every shipment."
+      icon: <Globe className="w-8 h-8 text-brand-gold" />,
+      title: "CLIMATE-MANAGED\nSTOWAGE",
+      description: "Ventilated dry and reefer stuffing engineered to prevent transit mold and cargo loss."
     },
     {
       icon: <Leaf className="w-8 h-8 text-brand-gold" />,
-      title: "NATURALLY\nSOURCED",
-      description: "Carefully sourced from the best farms and plantations."
+      title: "PHYTOSANITARY\nCLEARANCE",
+      description: "Complete APEDA export certificates, fumigation records, and SGS inspection support."
     },
     {
       icon: <Handshake className="w-8 h-8 text-brand-gold" />,
-      title: "TRUSTED\nPARTNER",
-      description: "Building long-term relationships based on trust and reliability."
+      title: "DIRECT REGIONAL\nHUBS",
+      description: "Direct sourcing from regional farm belts guarantees lot uniformity without middleman markups."
     }
   ]
 
@@ -90,21 +90,21 @@ export function WhyChooseUs() {
           <div className="flex flex-col gap-10">
             <div>
               <div className="why-text flex items-center gap-4 mb-4">
-                <span className="font-sans font-bold uppercase tracking-widest text-brand-gold text-sm">
-                  WHY CHOOSE US
+                <span className="font-sans font-bold uppercase tracking-widest text-brand-gold text-xs sm:text-sm">
+                  EXPORT RISK MITIGATION
                 </span>
                 <div className="w-12 h-[1px] bg-brand-gold hidden sm:block"></div>
               </div>
-              <h2 className="why-text font-serif text-4xl md:text-5xl text-brand-navy font-bold leading-tight mb-6">
-                Your Trusted Export Partner Worldwide
+              <h2 className="why-text font-serif text-3xl sm:text-4xl md:text-5xl text-brand-navy font-bold leading-tight mb-5">
+                Export Logistics Structured to Protect Cargo Integrity.
               </h2>
-              <p className="why-text text-brand-charcoal/80 text-lg leading-relaxed mb-8">
-                We are committed to delivering premium quality products with reliability, transparency and excellence at every step.
+              <p className="why-text text-brand-charcoal/85 text-base sm:text-lg leading-relaxed mb-8">
+                Every container consignment is pre-sorted, lab-tested for moisture parameters, and packed to withstand long maritime transit without grade degradation.
               </p>
               <div className="why-text mb-8">
-                <Link href="/about" className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold rounded-xl inline-block group">
+                <Link href="/quality" className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold rounded-xl inline-block group">
                   <Button variant="primary" className="h-14 px-8 text-base font-semibold transition-all">
-                    <span className="flex items-center gap-2">ABOUT US <span className="group-hover:translate-x-1 transition-transform">&rarr;</span></span>
+                    <span className="flex items-center gap-2">REVIEW QUALITY PROTOCOLS <span className="group-hover:translate-x-1 transition-transform">&rarr;</span></span>
                   </Button>
                 </Link>
               </div>

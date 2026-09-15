@@ -31,20 +31,23 @@ export function CTAStrip() {
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="bg-brand-navy border-t border-white/10 pt-10 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 relative overflow-hidden rounded-2xl md:rounded-none px-6 md:px-0">
           
-          <div className="text-center md:text-left z-10">
-            <h2 className="cta-content font-serif text-2xl md:text-3xl lg:text-4xl text-white font-bold mb-3">
-              Let&apos;s Build a Stronger Future Together
+          <div className="text-center md:text-left z-10 max-w-2xl">
+            <div className="cta-content inline-flex items-center gap-2 px-3 py-1 rounded bg-white/10 text-brand-gold text-xs font-semibold uppercase tracking-wider mb-3">
+              <span>MOQ: 1x20ft FCL &bull; APEDA Certified &bull; SGS Inspection Ready</span>
+            </div>
+            <h2 className="cta-content font-serif text-2xl md:text-3xl lg:text-4xl text-white font-bold mb-3 leading-tight">
+              Receive a Detailed CIF or FOB Price Quote Within 24 Hours.
             </h2>
-            <p className="cta-content text-brand-ivory/70 text-sm md:text-base max-w-xl">
-              Connect with us today for premium quality products and reliable export services.
+            <p className="cta-content text-brand-ivory/80 text-sm md:text-base leading-relaxed">
+              Submit your required commodity grades, container volume, and destination port. Our export desk will calculate current FOB/CIF pricing and vessel schedules.
             </p>
           </div>
           
-          <div className="cta-content z-10">
+          <div className="cta-content z-10 shrink-0">
             <Link href="/contact" className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold rounded-xl shrink-0 group block">
-              <Button variant="primary" className="h-14 px-8 text-base font-semibold whitespace-nowrap overflow-hidden relative">
-                <span className="relative z-10 flex items-center gap-2">
-                  GET IN TOUCH <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
+              <Button variant="primary" className="h-14 px-8 text-base font-semibold whitespace-nowrap overflow-hidden relative shadow-lg">
+                <span className="relative z-10 flex items-center justify-center gap-2">
+                  REQUEST CONTAINER PRICE QUOTE <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
                 </span>
               </Button>
             </Link>

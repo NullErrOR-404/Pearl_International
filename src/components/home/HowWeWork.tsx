@@ -99,23 +99,23 @@ export function HowWeWork() {
   const steps = [
     {
       icon: <Leaf className="w-8 h-8 text-white icon-leaf group-hover:rotate-12 group-hover:text-green-400 transition-all duration-300" />,
-      title: "SOURCING",
-      description: "We source the best\nquality produce."
+      title: "ORIGIN SOURCING",
+      description: "Direct lot selection from\nSouth Indian farm belts."
     },
     {
       icon: <Search className="w-8 h-8 text-white icon-search group-hover:scale-110 group-hover:text-blue-400 transition-all duration-300" />,
-      title: "QUALITY CHECK",
-      description: "Rigorous quality\ninspection."
+      title: "GRADING & CHECK",
+      description: "Moisture calibration &\nzero-defect sorting."
     },
     {
       icon: <Package className="w-8 h-8 text-white icon-package group-hover:-translate-y-2 group-hover:text-orange-400 transition-all duration-300" />,
-      title: "PACKAGING",
-      description: "Hygienic & export\nstandard packaging."
+      title: "EXPORT PACKING",
+      description: "UV-treated PP, jute bags,\nor buyer private label."
     },
     {
       icon: <Truck className="w-8 h-8 text-white icon-truck group-hover:translate-x-2 group-hover:text-gray-300 transition-all duration-300" />,
-      title: "SHIPPING",
-      description: "Timely delivery to\nglobal destinations."
+      title: "PORT DISPATCH",
+      description: "Fast drayage to Chennai\n& Tuticorin port berths."
     }
   ]
 
@@ -137,11 +137,11 @@ export function HowWeWork() {
         
         {/* Header */}
         <div className="mb-16">
-          <span className="how-header font-sans font-bold uppercase tracking-widest text-brand-gold text-sm block mb-4">
-            HOW WE WORK
+          <span className="how-header font-sans font-bold uppercase tracking-widest text-brand-gold text-xs sm:text-sm block mb-3">
+            PROVEN EXPORT PIPELINE
           </span>
-          <h2 className="how-header font-serif text-4xl md:text-5xl text-white font-bold">
-            From Farm to Global Markets
+          <h2 className="how-header font-serif text-3xl sm:text-4xl md:text-5xl text-white font-bold max-w-2xl mx-auto leading-tight">
+            Our 4-Stage Container Dispatch Workflow
           </h2>
         </div>
 

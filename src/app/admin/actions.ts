@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache"
 import { createClient } from "@supabase/supabase-js"
 import { logActivity } from "@/lib/activity-logger"
+import { assertAdminSession } from "@/lib/auth/admin-guard"
 
 // Use service role key to bypass RLS for admin operations
 const supabaseAdmin = createClient(
@@ -18,6 +19,8 @@ const supabaseAdmin = createClient(
 
 export async function deleteProduct(id: string) {
   try {
+    await assertAdminSession()
+
     const { error } = await supabaseAdmin.from('products').delete().eq('id', id)
     
     if (error) {
@@ -37,6 +40,8 @@ export async function deleteProduct(id: string) {
 
 export async function upsertProduct(payload: any, id?: string) {
   try {
+    await assertAdminSession()
+
     if (id && id !== 'new') {
       const { error } = await supabaseAdmin.from('products').update(payload).eq('id', id)
       if (error) return { success: false, error: error.message }
@@ -53,8 +58,11 @@ export async function upsertProduct(payload: any, id?: string) {
     return { success: false, error: err.message }
   }
 }
+
 export async function deleteCategory(id: string) {
   try {
+    await assertAdminSession()
+
     const { error } = await supabaseAdmin.from('categories').delete().eq('id', id)
     
     if (error) {
@@ -73,6 +81,8 @@ export async function deleteCategory(id: string) {
 
 export async function upsertCategory(payload: any, id?: string) {
   try {
+    await assertAdminSession()
+
     if (id && id !== 'new') {
       const { error } = await supabaseAdmin.from('categories').update(payload).eq('id', id)
       if (error) return { success: false, error: error.message }
@@ -89,8 +99,11 @@ export async function upsertCategory(payload: any, id?: string) {
     return { success: false, error: err.message }
   }
 }
+
 export async function markInquiryAsRead(id: string) {
   try {
+    await assertAdminSession()
+
     const { error } = await supabaseAdmin.from('inquiries').update({ status: 'read' }).eq('id', id)
     if (error) return { success: false, error: error.message }
     await logActivity('READ', 'Inquiry', id)
@@ -104,6 +117,8 @@ export async function markInquiryAsRead(id: string) {
 
 export async function deleteInquiry(id: string) {
   try {
+    await assertAdminSession()
+
     const { error } = await supabaseAdmin.from('inquiries').delete().eq('id', id)
     if (error) return { success: false, error: error.message }
     await logActivity('DELETE', 'Inquiry', id)
@@ -117,6 +132,8 @@ export async function deleteInquiry(id: string) {
 
 export async function upsertSettings(payload: any, id: string) {
   try {
+    await assertAdminSession()
+
     const { error } = await supabaseAdmin.from('settings').update(payload).eq('id', id)
     if (error) return { success: false, error: error.message }
     await logActivity('UPDATE', 'Settings', id)
@@ -129,6 +146,8 @@ export async function upsertSettings(payload: any, id: string) {
 
 export async function getAdminArticles() {
   try {
+    await assertAdminSession()
+
     const { data, error } = await supabaseAdmin.from('articles').select('*').order('created_at', { ascending: false })
     if (error) throw error
     return { success: true, data }
@@ -139,6 +158,8 @@ export async function getAdminArticles() {
 
 export async function upsertArticle(payload: any, id?: string) {
   try {
+    await assertAdminSession()
+
     if (id) {
       const { error } = await supabaseAdmin.from('articles').update(payload).eq('id', id)
       if (error) return { success: false, error: error.message }
@@ -159,6 +180,8 @@ export async function upsertArticle(payload: any, id?: string) {
 
 export async function deleteArticle(id: string) {
   try {
+    await assertAdminSession()
+
     const { error } = await supabaseAdmin.from('articles').delete().eq('id', id)
     if (error) return { success: false, error: error.message }
     await logActivity('DELETE', 'Article', id)

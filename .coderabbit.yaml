@@ -1,0 +1,43 @@
+# CodeRabbit Configuration File
+# Reference: https://docs.coderabbit.ai/guides/configure-coderabbit
+
+version: "2"
+language: "en-US"
+tone_instructions: "Be concise, objective, and security-focused. Prioritize OWASP Top 10 vulnerabilities, unauthorized Next.js server actions, and secret exposure."
+
+reviews:
+  profile: "assertive"
+  request_changes_workflow: false
+  high_level_summary: true
+  poem: false
+  auto_review:
+    enabled: true
+    drafts: false
+    base_branches:
+      - "main"
+      - "master"
+  tools:
+    ast-grep:
+      enabled: true
+    eslint:
+      enabled: true
+    yamllint:
+      enabled: true
+  path_filters:
+    - "!**/*.min.*"
+    - "!**/*.lock"
+    - "!package-lock.json"
+    - "!public/images/**"
+    - "!public/og/**"
+    - "!Reference Images/**"
+    - "!Assets/**"
+    - "!scratch/**"
+  guidelines:
+    - "Enforce authentication on all Next.js Server Actions ('use server') mutating data. Never execute service role mutations without verifying session identity."
+    - "Ensure all user inputs to Server Actions and Route Handlers are strictly validated using Zod schemas."
+    - "Confirm that service role keys and server secrets are never imported or accessed in client components ('use client')."
+    - "Ensure outgoing emails and database reflections sanitize dynamic strings to prevent HTML injection and Stored XSS."
+    - "Verify that all external resource links comply with the repository's Content-Security-Policy."
+
+chat:
+  auto_reply: true

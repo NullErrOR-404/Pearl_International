@@ -9,7 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { Loader2, ArrowLeft, Save, UploadCloud, Image as ImageIcon } from "lucide-react"
 import Link from "next/link"
-import { upsertProduct } from "@/app/admin/actions"
+import { upsertProduct, uploadAdminImage } from "@/app/admin/actions"
 import { ElegantSelect } from "@/components/ui/ElegantSelect"
 
 const productSchema = z.object({
@@ -70,25 +70,19 @@ export default function ProductEditPage({ params }: { params: Promise<{ id: stri
     const file = e.target.files[0]
     setUploading(true)
 
-    const fileExt = file.name.split('.').pop()
-    const fileName = `${Math.random().toString(36).substring(2, 15)}_${Date.now()}.${fileExt}`
-    const filePath = `products/${fileName}`
+    const formData = new FormData()
+    formData.append('file', file)
+    formData.append('folder', 'products')
 
-    const { error: uploadError } = await supabase.storage
-      .from('images')
-      .upload(filePath, file)
+    const result = await uploadAdminImage(formData)
 
-    if (uploadError) {
-      alert("Error uploading image: " + uploadError.message)
+    if (!result.success || !result.publicUrl) {
+      alert("Error uploading image: " + (result.error || "Upload failed"))
       setUploading(false)
       return
     }
 
-    const { data: { publicUrl } } = supabase.storage
-      .from('images')
-      .getPublicUrl(filePath)
-
-    setImageUrl(publicUrl)
+    setImageUrl(result.publicUrl)
     setUploading(false)
   }
 

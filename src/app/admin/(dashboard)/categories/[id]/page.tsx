@@ -9,7 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { Loader2, ArrowLeft, Save, UploadCloud, Image as ImageIcon, Wand2 } from "lucide-react"
 import Link from "next/link"
-import { upsertCategory } from "@/app/admin/actions"
+import { upsertCategory, uploadAdminImage } from "@/app/admin/actions"
 
 const categorySchema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -67,25 +67,19 @@ export default function CategoryEditPage({ params }: { params: Promise<{ id: str
     const file = e.target.files[0]
     setUploading(true)
 
-    const fileExt = file.name.split('.').pop()
-    const fileName = `${Math.random().toString(36).substring(2, 15)}_${Date.now()}.${fileExt}`
-    const filePath = `categories/${fileName}`
+    const formData = new FormData()
+    formData.append('file', file)
+    formData.append('folder', 'categories')
 
-    const { error: uploadError } = await supabase.storage
-      .from('images')
-      .upload(filePath, file)
+    const result = await uploadAdminImage(formData)
 
-    if (uploadError) {
-      alert("Error uploading image: " + uploadError.message)
+    if (!result.success || !result.publicUrl) {
+      alert("Error uploading image: " + (result.error || "Upload failed"))
       setUploading(false)
       return
     }
 
-    const { data: { publicUrl } } = supabase.storage
-      .from('images')
-      .getPublicUrl(filePath)
-
-    setImageUrl(publicUrl)
+    setImageUrl(result.publicUrl)
     setUploading(false)
   }
 

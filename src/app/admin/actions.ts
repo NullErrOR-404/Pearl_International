@@ -193,3 +193,57 @@ export async function deleteArticle(id: string) {
     return { success: false, error: err.message }
   }
 }
+
+export async function uploadAdminImage(formData: FormData) {
+  try {
+    await assertAdminSession()
+
+    const file = formData.get('file') as File | null
+    if (!file) {
+      return { success: false, error: 'No file provided.' }
+    }
+
+    // Size limit: 10MB
+    const MAX_SIZE = 10 * 1024 * 1024
+    if (file.size > MAX_SIZE) {
+      return { success: false, error: 'File size exceeds the 10MB limit.' }
+    }
+
+    // Validate mime type
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/svg+xml']
+    if (!allowedTypes.includes(file.type)) {
+      return { success: false, error: 'Invalid file type. Only JPG, PNG, WEBP, GIF, and SVG are allowed.' }
+    }
+
+    const folder = (formData.get('folder') as string) || 'products'
+    const safeFolder = folder.replace(/[^a-zA-Z0-9_-]/g, '') || 'products'
+    const fileExt = file.name.split('.').pop()?.replace(/[^a-zA-Z0-9]/g, '') || 'jpg'
+    const fileName = `${Math.random().toString(36).substring(2, 15)}_${Date.now()}.${fileExt}`
+    const filePath = `${safeFolder}/${fileName}`
+
+    const arrayBuffer = await file.arrayBuffer()
+    const buffer = Buffer.from(arrayBuffer)
+
+    const { error: uploadError } = await supabaseAdmin.storage
+      .from('images')
+      .upload(filePath, buffer, {
+        contentType: file.type,
+        upsert: false,
+      })
+
+    if (uploadError) {
+      console.error('Admin image upload error:', uploadError)
+      return { success: false, error: uploadError.message }
+    }
+
+    const { data: { publicUrl } } = supabaseAdmin.storage
+      .from('images')
+      .getPublicUrl(filePath)
+
+    return { success: true, publicUrl }
+  } catch (err: any) {
+    console.error('Server upload error:', err)
+    return { success: false, error: err.message || 'Failed to upload image.' }
+  }
+}
+
